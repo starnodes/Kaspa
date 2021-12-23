@@ -6,7 +6,7 @@ unzip $HOME/kaspad-linux.zip -d $HOME/.kaspad
 
 sudo tee /etc/systemd/system/kaspad.service > /dev/null <<EOF
 [Unit]
-Description=alephium
+Description=kaspa
 [Service]
 User=$USER
 Type=simple
@@ -21,4 +21,21 @@ sudo systemctl daemon-reload
 sudo systemctl enable kaspad
 sudo systemctl restart kaspad
 
-journalctl -f -u kaspad
+sudo tee /etc/systemd/system/kaspad-wallet.service > /dev/null <<EOF
+[Unit]
+Description=kaspa-wallet
+[Service]
+User=$USER
+Type=simple
+ExecStart=$HOME/.kaspad/bin/kaspawallet start-daemon
+Restart=always
+RestartSec=100
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable kaspad-wallet
+sudo systemctl restart kaspad-wallet
+echo 'use for wallet create: $HOME/.kaspad/bin/kaspawallet create'
+echo 'use for address create: $HOME/.kaspad/bin/kaspawallet new-address'
