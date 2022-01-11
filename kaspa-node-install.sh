@@ -1,6 +1,9 @@
+#!/bin/bash
+
 apt update
 apt-get install zip unzip -y
 cd
+rm -f $HOME/.kaspad/bin/kaspad
 sudo wget -qO $HOME/kaspad-linux.zip https://github.com/kaspanet/kaspad/releases/download/v0.11.9/kaspad-v0.11.9-linux.zip
 unzip $HOME/kaspad-linux.zip -d $HOME/.kaspad
 
@@ -37,5 +40,6 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable kaspad-wallet
 sudo systemctl restart kaspad-wallet
+
 echo 'use for wallet create: $HOME/.kaspad/bin/kaspawallet create'
 echo 'use for address create: $HOME/.kaspad/bin/kaspawallet new-address'

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 apt update
 apt install libc6 -y
 mkdir /miner
