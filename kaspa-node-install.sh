@@ -1,7 +1,7 @@
 apt update
 apt-get install zip unzip -y
 cd
-sudo wget -qO $HOME/kaspad-linux.zip https://github.com/kaspanet/kaspad/releases/download/v0.11.8/kaspad-v0.11.8-linux.zip
+sudo wget -qO $HOME/kaspad-linux.zip https://github.com/kaspanet/kaspad/releases/download/v0.11.9/kaspad-v0.11.9-linux.zip
 unzip $HOME/kaspad-linux.zip -d $HOME/.kaspad
 
 sudo tee /etc/systemd/system/kaspad.service > /dev/null <<EOF
